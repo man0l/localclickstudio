@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Med Spa Growth System | Book More Appointments</title>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l !== "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-XXXXXXX"); /* Replace with your GTM ID */
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              base: "#111111",
+              text: "#F0F0F0",
+              accent: "#BEF264",
+              border: "#1F2937",
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+              display: ["Sora", "Inter", "ui-sans-serif", "system-ui"],
+            },
+            boxShadow: {
+              glow: "0 10px 40px rgba(190, 242, 100, 0.35)",
+            },
+            backdropBlur: {
+              12: "12px",
+            },
+            spacing: {
+              18: "4.5rem",
+            },
+            borderRadius: {
+              xl2: "1rem",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #111111;
+        color: #f0f0f0;
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+      }
+      .btn-primary {
+        box-shadow: 0 10px 40px rgba(190, 242, 100, 0.35);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 50px rgba(190, 242, 100, 0.45);
+      }
+      .btn-primary:active {
+        transform: translateY(0);
+        opacity: 0.9;
+      }
+      .hero-bg {
+        background-image: linear-gradient(
+            90deg,
+            rgba(17, 17, 17, 0.9),
+            rgba(17, 17, 17, 0.6)
+          ),
+          url("https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80");
+        background-size: cover;
+        background-position: center;
+      }
+      .nav-blur {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .logo-marquee {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        animation: marquee 22s linear infinite;
+      }
+      .logo-marquee:hover {
+        animation-play-state: paused;
+      }
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .logo-tile {
+        filter: grayscale(1);
+        transition: filter 0.3s ease, transform 0.2s ease;
+      }
+      .logo-tile:hover {
+        filter: grayscale(0);
+        transform: translateY(-4px);
+      }
+      .process-line::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          rgba(190, 242, 100, 0.7),
+          rgba(31, 41, 55, 0.7)
+        );
+        z-index: 0;
+      }
+      @media (max-width: 1024px) {
+        .process-line::before {
+          display: none;
+        }
+      }
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.25s ease, opacity 0.2s ease;
+        opacity: 0;
+      }
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+        opacity: 1;
+      }
+      .tab-button {
+        transition: background-color 0.2s ease, border-color 0.2s ease,
+          color 0.2s ease;
+      }
+      .tab-button.active {
+        border-color: #bef264;
+        background-color: rgba(190, 242, 100, 0.08);
+        color: #bef264;
+      }
+      .mobile-menu {
+        transition: opacity 0.25s ease, visibility 0.25s ease;
+      }
+      .mobile-menu.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .mobile-menu.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+    </style>
+  </head>
+  <body class="bg-base text-text">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+        title="Google Tag Manager"
+      ></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="min-h-screen">
+      <!-- Header -->
+      <header
+        class="fixed top-0 z-30 w-full border-b border-border/70 bg-[#0d0d0d]/70 nav-blur"
+        id="top"
+      >
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <div class="flex items-center gap-2">
+            <div
+              class="h-9 w-9 rounded-lg bg-gradient-to-br from-accent to-lime-500 text-base flex items-center justify-center font-display text-base font-bold text-black shadow-glow"
+            >
+              M
+            </div>
+            <div>
+              <p class="font-display text-lg text-white">MedSpa Growth System</p>
+              <p class="text-xs text-gray-400">
+                Predictable appointments, guaranteed
+              </p>
+            </div>
+          </div>
+          <nav class="hidden items-center gap-8 text-sm font-medium lg:flex">
+            <a class="hover:text-accent transition-colors" href="#systems">Systems</a>
+            <a class="hover:text-accent transition-colors" href="#process">Process</a>
+            <a class="hover:text-accent transition-colors" href="#results">Results</a>
+            <a class="hover:text-accent transition-colors" href="#faq">FAQ</a>
+          </nav>
+          <div class="hidden lg:block">
+            <a
+              href="https://calendly.com/medspastrategy/call"
+              class="btn-primary inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2 text-sm font-semibold text-black shadow-glow"
+            >
+              Book Your Strategy Call
+            </a>
+          </div>
+          <button
+            class="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border text-white hover:border-accent focus:outline-none"
+            id="menu-toggle"
+            aria-label="Open menu"
+          >
+            <span class="sr-only">Toggle menu</span>
+            <div class="space-y-1.5">
+              <span class="block h-0.5 w-6 bg-white"></span>
+              <span class="block h-0.5 w-6 bg-white"></span>
+              <span class="block h-0.5 w-6 bg-white"></span>
+            </div>
+          </button>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div
+          id="mobile-menu"
+          class="mobile-menu fixed inset-0 z-20 hidden bg-black/90 backdrop-blur-12 lg:hidden"
+        >
+          <div class="flex h-full flex-col items-center justify-center gap-8 text-lg">
+            <a
+              class="hover:text-accent transition-colors"
+              href="#systems"
+              data-close
+              >Systems</a
+            >
+            <a class="hover:text-accent transition-colors" href="#process" data-close
+              >Process</a
+            >
+            <a class="hover:text-accent transition-colors" href="#results" data-close
+              >Results</a
+            >
+            <a class="hover:text-accent transition-colors" href="#faq" data-close>FAQ</a>
+            <a
+              href="https://calendly.com/medspastrategy/call"
+              class="btn-primary inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-black shadow-glow"
+              >Book Your Strategy Call</a
+            >
+          </div>
+        </div>
+      </header>
+
+      <main class="pt-24">
+        <!-- Hero -->
+        <section class="hero-bg relative overflow-hidden">
+          <div
+            class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#111111]"
+            aria-hidden="true"
+          ></div>
+          <div class="relative mx-auto flex max-w-6xl flex-col gap-10 px-6 py-20 lg:flex-row lg:items-center lg:py-24">
+            <div class="flex-1 space-y-6">
+              <p class="font-display text-sm uppercase tracking-[0.2em] text-accent">
+                Med Spa Growth System
+              </p>
+              <h1 class="font-display text-4xl leading-tight text-white md:text-5xl lg:text-6xl">
+                We generated <span class="text-accent">1,800+ new clients</span> for a
+                premium wellness brand—now we do it for med spas.
+              </h1>
+              <p class="text-lg text-gray-300 md:text-xl">
+                The same appointment-booking engine that produced €700K in trackable
+                revenue. Built for med spas that want full calendars without guesswork.
+              </p>
+              <div class="flex flex-wrap items-center gap-4">
+                <a
+                  href="https://calendly.com/medspastrategy/call"
+                  class="btn-primary inline-flex items-center gap-3 rounded-full bg-accent px-6 py-3 text-base font-semibold text-black shadow-glow"
+                >
+                  Book Your Strategy Call
+                </a>
+                <p class="text-sm text-gray-400">30 minutes. No obligation.</p>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <div
+                  class="rounded-xl border border-border bg-[#0f0f0f]/70 p-4"
+                  aria-label="Lead results highlight"
+                >
+                  <p class="text-2xl font-display text-accent">10,000+</p>
+                  <p class="text-sm text-gray-400">Total leads generated</p>
+                </div>
+                <div
+                  class="rounded-xl border border-border bg-[#0f0f0f]/70 p-4"
+                  aria-label="Revenue results highlight"
+                >
+                  <p class="text-2xl font-display text-accent">€700K</p>
+                  <p class="text-sm text-gray-400">Trackable revenue in 12 months</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex-1">
+              <div
+                class="rounded-2xl border border-border bg-[#0f0f0f]/70 p-6 shadow-xl"
+              >
+                <p class="font-display text-lg text-white">
+                  What we actually did (and how it applies to your med spa)
+                </p>
+                <ul class="mt-4 space-y-3 text-gray-300">
+                  <li class="flex gap-3">
+                    <span class="text-accent">•</span>
+                    <span>Launched mobile-first booking + targeted ads in month 1.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="text-accent">•</span>
+                    <span>1,000+ qualified leads in 30 days, 1,800+ new clients in a year.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="text-accent">•</span>
+                    <span>Every euro tracked—know which ads create booked appointments.</span>
+                  </li>
+                </ul>
+                <div class="mt-6 rounded-lg border border-border bg-[#0b0b0b] p-4">
+                  <p class="font-display text-sm text-gray-200">
+                    Another example: €1M → €2M in 12 months
+                  </p>
+                  <p class="mt-2 text-sm text-gray-400">
+                    Luxury e-commerce brand, ROAS 16:1 by focusing only on converting
+                    traffic and cutting everything else.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Social Proof -->
+        <section class="border-y border-border bg-[#0f0f0f]">
+          <div class="mx-auto max-w-6xl px-6 py-10">
+            <p class="text-center text-sm uppercase tracking-[0.2em] text-gray-400">
+              Trusted by industry-leading med spas
+            </p>
+            <div class="relative mt-6 overflow-hidden">
+              <div class="logo-marquee whitespace-nowrap">
+                <div class="flex items-center gap-12 pr-12">
+                  <div
+                    class="logo-tile rounded-lg border border-border bg-[#111111] px-5 py-3 text-sm text-gray-200"
+                  >
+                    Luxe Aesthetics
+                  </div>
+                  <div
+                    class="logo-tile rounded-lg border border-border bg-[#111111] px-5 py-3 text-sm text-gray-200"
+                  >
+                    Urban Glow Clinics
+                  </div>
+                  <div
+                    class="logo-tile rounded-lg border border-border bg-[#111111] px-5 py-3 text-sm text-gray-200"
+                  >
+                    Radiance Labs
+                  </div>
+                  <div
+                    class="logo-tile rounded-lg border border-border bg-[#111111] px-5 py-3 text-sm text-gray-200"
+                  >
+                    Elevate MedSpa
+                  </div>
+                  <div
+                    class="logo-tile rounded-lg border border-border bg-[#111111] px-5 py-3 text-sm text-gray-200"
+                  >
+                    Nova Aesthetics
+                  </div>
+                </div>
+                <div class="flex items-center gap-12 pr-12" aria-hidden="true">
+                  <div
+                    class="logo-tile rounded-lg border border-border bg-[#111111] px-5 py-3 text-sm text-gray-200"
+                  >
+                    Luxe Aesthetics
+                  </div>
+                  <div
+                    class="logo-tile rounded-lg border border-border bg-[#111111] px-5 py-3 text-sm text-gray-200"
+                  >
+                    Urban Glow Clinics
+                  </div>
+                  <div
+                    class="logo-tile rounded-lg border border-border bg-[#111111] px-5 py-3 text-sm text-gray-200"
+                  >
+                    Radiance Labs
+                  </div>
+                  <div
+                    class="logo-tile rounded-lg border border-border bg-[#111111] px-5 py-3 text-sm text-gray-200"
+                  >
+                    Elevate MedSpa
+                  </div>
+                  <div
+                    class="logo-tile rounded-lg border border-border bg-[#111111] px-5 py-3 text-sm text-gray-200"
+                  >
+                    Nova Aesthetics
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Case Studies -->
+        <section class="mx-auto max-w-6xl px-6 py-16">
+          <div class="mb-8 flex flex-col gap-2">
+            <p class="text-sm uppercase tracking-[0.2em] text-accent">Case studies</p>
+            <h2 class="font-display text-3xl text-white">Proof the system works</h2>
+            <p class="text-gray-400">
+              Built for med spas that want predictable appointments and transparent ROI.
+            </p>
+          </div>
+          <div class="grid gap-6 md:grid-cols-2">
+            <article class="rounded-xl border border-border bg-[#0f0f0f] p-6">
+              <p class="text-xs uppercase tracking-[0.2em] text-gray-400">Lead Volume</p>
+              <h3 class="mt-2 font-display text-xl text-white">
+                1,000+ qualified leads in 30 days
+              </h3>
+              <p class="mt-3 text-gray-300">
+                Mobile-first booking + Google Ads for high-intent service keywords.
+                Zero friction from click to appointment.
+              </p>
+            </article>
+            <article class="rounded-xl border border-border bg-[#0f0f0f] p-6">
+              <p class="text-xs uppercase tracking-[0.2em] text-gray-400">Revenue</p>
+              <h3 class="mt-2 font-display text-xl text-white">
+                €700K tracked revenue in 12 months
+              </h3>
+              <p class="mt-3 text-gray-300">
+                Appointment tracking tied to ad spend so every euro was accountable.
+              </p>
+            </article>
+            <article class="rounded-xl border border-border bg-[#0f0f0f] p-6">
+              <p class="text-xs uppercase tracking-[0.2em] text-gray-400">Efficiency</p>
+              <h3 class="mt-2 font-display text-xl text-white">ROAS above 16:1</h3>
+              <p class="mt-3 text-gray-300">
+                Luxury e-commerce brand doubled revenue by focusing only on converting
+                buyers and cutting wasted spend.
+              </p>
+            </article>
+            <article class="rounded-xl border border-border bg-[#0f0f0f] p-6">
+              <p class="text-xs uppercase tracking-[0.2em] text-gray-400">Scale</p>
+              <h3 class="mt-2 font-display text-xl text-white">
+                20–50+ new appointments monthly
+              </h3>
+              <p class="mt-3 text-gray-300">
+                Med spas kept up with demand through scheduling, staffing visibility, and
+                offer sequencing.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- Systems -->
+        <section id="systems" class="border-y border-border bg-[#0f0f0f] py-16">
+          <div class="mx-auto max-w-6xl px-6">
+            <div class="mb-8 flex flex-col gap-2">
+              <p class="text-sm uppercase tracking-[0.2em] text-accent">Systems</p>
+              <h2 class="font-display text-3xl text-white">
+                Four systems that drive booked clients
+              </h2>
+              <p class="text-gray-400">
+                Built to find, convert, and track every appointment so you scale with
+                certainty.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <button
+                class="tab-button active rounded-full border border-border px-4 py-2 text-sm"
+                data-tab="booking"
+              >
+                📅 Booking System
+              </button>
+              <button
+                class="tab-button rounded-full border border-border px-4 py-2 text-sm"
+                data-tab="traffic"
+              >
+                🚀 Traffic System
+              </button>
+              <button
+                class="tab-button rounded-full border border-border px-4 py-2 text-sm"
+                data-tab="tracking"
+              >
+                📊 Tracking & Optimization
+              </button>
+            </div>
+            <div class="mt-8 grid gap-6 lg:grid-cols-2" id="tab-panels">
+              <div
+                class="tab-panel rounded-xl border border-border bg-[#0b0b0b] p-6"
+                data-tab-panel="booking"
+              >
+                <h3 class="font-display text-xl text-white">Booking System</h3>
+                <p class="mt-2 text-gray-300">
+                  Mobile-first scheduling that removes friction from click to confirmed
+                  appointment.
+                </p>
+                <ul class="mt-4 space-y-3 text-gray-300">
+                  <li class="flex gap-3">
+                    <span class="mt-1 text-accent">✔</span>
+                    <span>Online scheduling integrated with staff calendars.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="mt-1 text-accent">✔</span>
+                    <span>Zero-dead-end booking flow built for mobile visitors.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="mt-1 text-accent">✔</span>
+                    <span>Reminders and follow-ups to reduce no-shows.</span>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="tab-panel hidden rounded-xl border border-border bg-[#0b0b0b] p-6"
+                data-tab-panel="traffic"
+              >
+                <h3 class="font-display text-xl text-white">Traffic System</h3>
+                <p class="mt-2 text-gray-300">
+                  High-intent ads that meet prospects the moment they search for your
+                  services.
+                </p>
+                <ul class="mt-4 space-y-3 text-gray-300">
+                  <li class="flex gap-3">
+                    <span class="mt-1 text-accent">✔</span>
+                    <span>Google Ads for buyers ready to book today.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="mt-1 text-accent">✔</span>
+                    <span>Meta Ads for awareness, retargeting, and offer testing.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="mt-1 text-accent">✔</span>
+                    <span>Landing pages tuned for appointment conversions.</span>
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="tab-panel hidden rounded-xl border border-border bg-[#0b0b0b] p-6"
+                data-tab-panel="tracking"
+              >
+                <h3 class="font-display text-xl text-white">Tracking & Optimization</h3>
+                <p class="mt-2 text-gray-300">
+                  Transparent performance so you know exactly what each client costs.
+                </p>
+                <ul class="mt-4 space-y-3 text-gray-300">
+                  <li class="flex gap-3">
+                    <span class="mt-1 text-accent">✔</span>
+                    <span>Every lead source tied to booked appointments.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="mt-1 text-accent">✔</span>
+                    <span>Weekly reviews of winning offers, creative, and audiences.</span>
+                  </li>
+                  <li class="flex gap-3">
+                    <span class="mt-1 text-accent">✔</span>
+                    <span>Scale what works, kill what doesn’t—fast.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Process -->
+        <section id="process" class="mx-auto max-w-6xl px-6 py-16">
+          <div class="mb-10 flex flex-col gap-2">
+            <p class="text-sm uppercase tracking-[0.2em] text-accent">Process</p>
+            <h2 class="font-display text-3xl text-white">
+              Four steps to booked calendars
+            </h2>
+            <p class="text-gray-400">
+              Foundation in 60 days, performance mode after that. No appointments, no
+              payment.
+            </p>
+          </div>
+          <div class="process-line relative">
+            <div class="grid gap-8 lg:grid-cols-4">
+              <div class="relative z-10 space-y-3 rounded-xl border border-border bg-[#0f0f0f] p-5">
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-accent font-display text-black"
+                >
+                  1
+                </div>
+                <h3 class="font-display text-lg text-white">Audit & Plan</h3>
+                <p class="text-gray-300">
+                  Market analysis, offers, and capacity mapping so we set targets that make
+                  sense.
+                </p>
+              </div>
+              <div class="relative z-10 space-y-3 rounded-xl border border-border bg-[#0f0f0f] p-5">
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-accent font-display text-black"
+                >
+                  2
+                </div>
+                <h3 class="font-display text-lg text-white">Build</h3>
+                <p class="text-gray-300">
+                  Launch the booking stack, tracking, and first campaigns inside 30 days.
+                </p>
+              </div>
+              <div class="relative z-10 space-y-3 rounded-xl border border-border bg-[#0f0f0f] p-5">
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-accent font-display text-black"
+                >
+                  3
+                </div>
+                <h3 class="font-display text-lg text-white">Optimize</h3>
+                <p class="text-gray-300">
+                  Weekly testing of creative, audiences, and offers—keep what books, cut the
+                  rest.
+                </p>
+              </div>
+              <div class="relative z-10 space-y-3 rounded-xl border border-border bg-[#0f0f0f] p-5">
+                <div
+                  class="flex h-10 w-10 items-center justify-center rounded-full bg-accent font-display text-black"
+                >
+                  4
+                </div>
+                <h3 class="font-display text-lg text-white">Scale</h3>
+                <p class="text-gray-300">
+                  Move to performance pricing. Appointments delivered = invoices paid.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Results -->
+        <section id="results" class="border-y border-border bg-[#0f0f0f] py-16">
+          <div class="mx-auto max-w-6xl px-6">
+            <div class="mb-8 flex flex-col gap-2">
+              <p class="text-sm uppercase tracking-[0.2em] text-accent">Results</p>
+              <h2 class="font-display text-3xl text-white">
+                Transparent performance you can see
+              </h2>
+              <p class="text-gray-400">
+                Track booked appointments, revenue, and cost per client across every
+                channel.
+              </p>
+            </div>
+            <div class="rounded-xl border border-border bg-[#0b0b0b] p-6">
+              <div class="mb-4 flex items-center justify-between">
+                <div>
+                  <h3 class="font-display text-xl text-white">Monthly growth</h3>
+                  <p class="text-sm text-gray-400">Appointments booked over 4 months</p>
+                </div>
+                <div class="flex items-center gap-3 text-sm text-gray-400">
+                  <span class="inline-flex h-3 w-3 rounded-full bg-accent"></span>
+                  <span>Booked appointments</span>
+                </div>
+              </div>
+              <canvas id="resultsChart" aria-label="Appointments over four months"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="mx-auto max-w-6xl px-6 py-16">
+          <div class="mb-8 flex flex-col gap-2">
+            <p class="text-sm uppercase tracking-[0.2em] text-accent">FAQ</p>
+            <h2 class="font-display text-3xl text-white">Answers before we begin</h2>
+            <p class="text-gray-400">Only one question stays open at a time.</p>
+          </div>
+          <div class="space-y-4">
+            <div class="faq-item rounded-xl border border-border bg-[#0f0f0f] p-5">
+              <button class="flex w-full items-center justify-between text-left">
+                <span class="font-display text-lg text-white">
+                  What do you need from us to start?
+                </span>
+                <span class="text-accent">+</span>
+              </button>
+              <div class="faq-answer mt-3 text-gray-300">
+                We need access to your booking calendar, ad accounts, and clarity on your
+                capacity. Minimum €1,500/month ad budget and 90 days to build and optimize.
+              </div>
+            </div>
+            <div class="faq-item rounded-xl border border-border bg-[#0f0f0f] p-5">
+              <button class="flex w-full items-center justify-between text-left">
+                <span class="font-display text-lg text-white">
+                  How does the performance-based guarantee work?
+                </span>
+                <span class="text-accent">+</span>
+              </button>
+              <div class="faq-answer mt-3 text-gray-300">
+                Phase 1 (months 1-2): implementation fee covers build + launch. Phase 2
+                (month 3+): you pay per qualified appointment delivered. No appointments, no
+                payment.
+              </div>
+            </div>
+            <div class="faq-item rounded-xl border border-border bg-[#0f0f0f] p-5">
+              <button class="flex w-full items-center justify-between text-left">
+                <span class="font-display text-lg text-white">
+                  Do you work with any med spa?
+                </span>
+                <span class="text-accent">+</span>
+              </button>
+              <div class="faq-answer mt-3 text-gray-300">
+                We partner with med spas that have great service, capacity for 20–50+ new
+                appointments, and are ready to invest in paid traffic for at least 90 days.
+              </div>
+            </div>
+            <div class="faq-item rounded-xl border border-border bg-[#0f0f0f] p-5">
+              <button class="flex w-full items-center justify-between text-left">
+                <span class="font-display text-lg text-white">
+                  Can you integrate with our existing tools?
+                </span>
+                <span class="text-accent">+</span>
+              </button>
+              <div class="faq-answer mt-3 text-gray-300">
+                Yes. We integrate booking with your CRM, scheduling, and analytics. If you
+                don’t have the stack, we set it up for you.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="border-y border-border bg-[#0f0f0f] py-16">
+          <div class="mx-auto max-w-4xl px-6">
+            <div class="rounded-2xl border border-border bg-[#0b0b0b] p-10 text-center">
+              <h3 class="font-display text-3xl text-white">
+                Ready to fill your calendar with qualified appointments?
+              </h3>
+              <p class="mt-3 text-gray-300">
+                We build, track, and optimize the entire system. You serve clients; we bring
+                them in.
+              </p>
+              <div class="mt-6 flex flex-col items-center gap-4">
+                <a
+                  href="https://calendly.com/medspastrategy/call"
+                  class="btn-primary inline-flex items-center gap-3 rounded-full bg-accent px-8 py-3 text-base font-semibold text-black shadow-glow"
+                >
+                  Book Your Strategy Call
+                </a>
+                <p class="text-sm text-gray-400">
+                  🛡️ Risk-free: performance-based from month 3. If we don't deliver
+                  qualified appointments, you don't pay.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="py-8 text-center text-sm text-gray-500">
+        © <span id="year"></span> MedSpa Growth System. All rights reserved.
+      </footer>
+    </div>
+
+    <!-- Optional Trustpilot placeholder (replace with your widget if applicable) -->
+    <div class="hidden" aria-hidden="true" id="trustpilot-placeholder">
+      <!-- Insert Trustpilot widget script here when available -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const tabButtons = document.querySelectorAll(".tab-button");
+      const tabPanels = document.querySelectorAll("[data-tab-panel]");
+      const faqItems = document.querySelectorAll(".faq-item");
+
+      const closeMobileMenu = () => {
+        mobileMenu.classList.add("hidden");
+        mobileMenu.classList.remove("visible");
+      };
+
+      const openMobileMenu = () => {
+        mobileMenu.classList.remove("hidden");
+        mobileMenu.classList.add("visible");
+      };
+
+      menuToggle?.addEventListener("click", () => {
+        if (mobileMenu.classList.contains("hidden")) {
+          openMobileMenu();
+        } else {
+          closeMobileMenu();
+        }
+      });
+
+      mobileMenu?.addEventListener("click", (e) => {
+        if (e.target === mobileMenu) closeMobileMenu();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeMobileMenu();
+        }
+      });
+
+      document.querySelectorAll('[data-close]').forEach((link) => {
+        link.addEventListener("click", closeMobileMenu);
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const targetId = this.getAttribute("href");
+          if (!targetId || targetId === "#") return;
+          const target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+
+      tabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const target = btn.getAttribute("data-tab");
+          tabButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          tabPanels.forEach((panel) => {
+            const match = panel.getAttribute("data-tab-panel");
+            panel.classList.toggle("hidden", match !== target);
+          });
+        });
+      });
+
+      faqItems.forEach((item) => {
+        const button = item.querySelector("button");
+        button.addEventListener("click", () => {
+          faqItems.forEach((el) => el.classList.remove("active"));
+          item.classList.toggle("active");
+        });
+      });
+
+      const ctx = document.getElementById("resultsChart");
+      if (ctx) {
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: ["Month 1", "Month 2", "Month 3", "Month 4"],
+            datasets: [
+              {
+                label: "Booked Appointments",
+                data: [80, 140, 190, 240],
+                backgroundColor: "rgba(190, 242, 100, 0.7)",
+                borderColor: "#BEF264",
+                borderWidth: 1.5,
+                borderRadius: 6,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: {
+                ticks: { color: "#E5E7EB" },
+                grid: { color: "rgba(31,41,55,0.4)" },
+              },
+              y: {
+                ticks: { color: "#E5E7EB" },
+                grid: { color: "rgba(31,41,55,0.4)" },
+                beginAtZero: true,
+              },
+            },
+            plugins: {
+              legend: {
+                labels: { color: "#E5E7EB" },
+              },
+              tooltip: {
+                backgroundColor: "#111111",
+                borderColor: "#1F2937",
+                borderWidth: 1,
+                titleColor: "#F0F0F0",
+                bodyColor: "#E5E7EB",
+              },
+            },
+          },
+        });
+      }
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
+
