@@ -176,6 +176,18 @@
         opacity: 1;
         visibility: visible;
       }
+      .chart-wrapper {
+        height: 360px;
+      }
+      @media (min-width: 768px) {
+        .chart-wrapper {
+          height: 420px;
+        }
+      }
+      .chart-wrapper canvas {
+        height: 100% !important;
+        width: 100% !important;
+      }
     </style>
   </head>
   <body class="bg-base text-text">
@@ -661,7 +673,13 @@
                   <span>Booked appointments</span>
                 </div>
               </div>
-              <canvas id="resultsChart" aria-label="Appointments over four months"></canvas>
+              <div class="chart-wrapper">
+                <canvas
+                  id="resultsChart"
+                  aria-label="Appointments over four months"
+                  class="h-full w-full"
+                ></canvas>
+              </div>
             </div>
           </div>
         </section>
